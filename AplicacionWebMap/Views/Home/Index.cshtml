@@ -10,14 +10,53 @@
 <link rel="stylesheet" href="~/lib/Leaflet.markercluster-1.4.1/dist/MarkerCluster.Default.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.82.0/dist/L.Control.Locate.min.css" />
 <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
-
+<link href="~/lib/leaflet.fullscreen-master/Control.FullScreen.css" rel="stylesheet" />
 
 <!-- Mapa -->
+<div id="map" class="relative w-full" style="height: calc(100vh - 60px); z-index: 1;"></div>
+
+<!-- Panel flotante de "Viajero Seguro" -->
+<div id="routePanel" class="fixed left-5 top-5 z-50 mt-14 w-72 rounded-lg bg-white p-4 shadow-lg">
+    <h3 class="mb-4 text-xl font-semibold text-orange-500">Trayecto Confiable</h3>
+    <div class="lista" id="lista">
+        <div class="relative mb-3 rounded border border-black p-3">
+            <input id="start" type="text" placeholder="dirección o lugar de inicio" class="w-full rounded border border-gray-300 p-2 focus:border-orange-500 focus:ring focus:ring-orange-200" autocomplete="off" />
+            <ul id="start-suggestions" class="z-10 absolute left-0 right-0 mt-1 hidden max-h-48 overflow-auto rounded border border-gray-300 bg-white shadow-lg"></ul>
+        </div>
+
+        <div class="relative mb-3 rounded border border-black p-3">
+            <input id="end" type="text" placeholder="dirección o lugar de destino" class="w-full rounded border border-gray-300 p-2 focus:border-orange-500 focus:ring focus:ring-orange-200" autocomplete="off" />
+            <ul id="end-suggestions" class="z-10 absolute left-0 right-0 mt-1 hidden max-h-48 overflow-auto rounded border border-gray-300 bg-white shadow-lg"></ul>
+        </div>
+    </div>
+    
+    <div class="flex">
+        <button type="button" class="mb-2 me-2 rounded-full border border-yellow-400 px-5 py-2.5 text-center text-sm font-medium text-yellow-400 hover:text-black hover:bg-yellow-200" onclick="addStop()">Añadir parada</button>
+        <button type="button" class="border-2 mb-2 me-2 rounded-full border-gray-950 px-5 py-2.5 text-center text-sm font-medium text-gray-700 hover:text-white hover:bg-gray-500" onclick="">Limpiar</button>
+
+    </div>
 
 
 
+    <div class="mb-3">
+        <h3 class="text-md mb-2 font-semibold text-orange-500">Categoria</h3>
+        <select id="vehicleType" class="w-full rounded border border-gray-300 p-2 focus:border-orange-500 focus:ring focus:ring-orange-200">
+            <option value="Categoria">Seleccione</option>
+            <option value="Moto">Moto</option>
+            <option value="Vehiculo Categoria 1">Vehiculo Categoria 1</option>
+            <option value="Vehiculo Categoria 2">Vehiculo Categoria 2</option>
+            <option value="Vehiculo Categoria 3">Vehiculo Categoria 3</option>
+            <option value="Vehiculo Categoria 4">Vehiculo Categoria 4</option>
+            <option value="Vehiculo Categoria 5">Vehiculo Categoria 5</option>
+            <option value="Vehiculo Categoria 6">Vehiculo Categoria 6</option>
+            <option value="Vehiculo Categoria 7">Vehiculo Categoria 7</option>
 
-<div id="map" class="w-full" style="height: calc(100vh - 60px);"></div>
+
+        </select>
+    </div>
+
+    <p id="routeResult" class="mt-4 text-center text-gray-500">Su ruta aparecerá aquí.</p>
+</div>
 
 <!-- Scripts -->
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
@@ -26,7 +65,8 @@
 <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.82.0/dist/L.Control.Locate.min.js"></script>
 <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
-
+<script src="~/lib/leaflet.fullscreen-master/Control.FullScreen.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 
 <!-- Script de inicialización -->
 <script src="~/js/Index.js"></script>

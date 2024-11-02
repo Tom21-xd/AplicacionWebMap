@@ -1,5 +1,7 @@
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddSingleton<AplicacionWebMap.Data.Conexion>();
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

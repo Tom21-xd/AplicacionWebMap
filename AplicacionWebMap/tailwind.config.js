@@ -5,7 +5,11 @@ module.exports = {
     ],
     darkMode: 'class',
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                customYellow: '#FEA500', // Añadir color personalizado
+            },
+        },
     },
     plugins: [],
 }

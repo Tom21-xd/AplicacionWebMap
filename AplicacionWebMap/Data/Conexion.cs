@@ -1,5 +1,6 @@
 ﻿using Npgsql;
 using System.Data;
+using System.Reflection.Metadata;
 
 
 namespace AplicacionWebMap.Data
@@ -7,7 +8,6 @@ namespace AplicacionWebMap.Data
     public class Conexion
     {
         private readonly string _connectionString;
-
         public Conexion(IConfiguration configuration)
         {
             // Lee la cadena de conexión desde appsettings.json
@@ -30,6 +30,23 @@ namespace AplicacionWebMap.Data
                 connection.Close();
             }
         }
+        public DataTable ExecuteQuery(string query)
+        {
+            using (var connection = GetConnection())
+            {
+                using (var command = new NpgsqlCommand(query, connection))
+                {
+                    using (var adapter = new NpgsqlDataAdapter(command))
+                    {
+                        var dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        CloseConnection(connection);
+                        return dataTable;
+                    }
+                }
+            }
+        }
+
     }
 
 }

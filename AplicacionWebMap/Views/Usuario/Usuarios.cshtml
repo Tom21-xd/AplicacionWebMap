@@ -1,0 +1,40 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<body class="bg-gray-100 font-sans">
+
+    <!-- Encabezado principal -->
+    <div class="flex items-center justify-center mt-10">
+        <img src="~/img/grupo.png" alt="Icono de Usuarios" class="h-12 w-12 mr-3">
+        <h1 class="text-3xl font-bold text-dark-800">USUARIOS</h1>
+        
+    </div>
+
+    <!-- Tabla de usuarios centrada -->
+    <div class="container mx-auto mt-4 p-6">
+        <table class="w-full min-w-full bg-white border rounded-lg overflow-hidden shadow-md">
+            <thead>
+                <tr class="bg-customYellow text-dark text-center">
+                    <th class="px-4 py-3 border-r">ID</th>
+                    <th class="px-4 py-3 border-r">NOMBRE</th>
+                    <th class="px-4 py-3 border-r">TELÉFONO</th>
+                    <th class="px-4 py-3">ROL</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var usuario in Model)
+                {
+                    <tr class="@(usuario.Id % 2 == 0 ? "bg-gray-100" : "bg-white") hover:bg-gray-200 transition duration-200 text-center">
+                        <td class="px-4 py-3 border-r text-gray-700">@usuario.Id</td>
+                        <td class="px-4 py-3 border-r text-gray-700">@usuario.Nombre</td>
+                        <td class="px-4 py-3 border-r text-gray-700">@usuario.Telefono</td>
+                        <td class="px-4 py-3 text-gray-700">@usuario.Rol</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</body>

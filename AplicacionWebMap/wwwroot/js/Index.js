@@ -24,32 +24,32 @@ var miniMapLayerGoogle = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y
     subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
 });
 
-var cities = L.tileLayer.wms("http://localhost:8081/geoserver/wms", {
-    layers: 'publico:ciudades_mundo',
+var cities = L.tileLayer.wms("http://localhost:8080/geoserver/wms", {
+    layers: 'Waos:ciudades_mundo',
     format: 'image/png',
     transparent: true,
     tiled: true,
     attribution: "Natural Earth"
 });
 
-var rios = L.tileLayer.wms("http://localhost:8081/geoserver/wms", {
-    layers: 'publico:Hidrografia_Mundo',
+var rios = L.tileLayer.wms("http://localhost:8080/geoserver/wms", {
+    layers: 'Waos:hidrografia_mundo',
     format: 'image/png',
     transparent: true,
     tiled: true,
     attribution: "Natural Earth"
 });
 
-var departamentos = L.tileLayer.wms("http://localhost:8081/geoserver/wms", {
-    layers: 'publico:dv_Departamento',
+var departamentos = L.tileLayer.wms("http://localhost:8080/geoserver/wms", {
+    layers: 'Waos:dv_departamento',
     format: 'image/png',
     transparent: true,
     tiled: true,
     attribution: "Natural Earth"
 });
 
-var paises = L.tileLayer.wms("http://localhost:8081/geoserver/wms", {
-    layers: 'publico:Paises_Mundo',
+var paises = L.tileLayer.wms("http://localhost:8080/geoserver/wms", {
+    layers: 'Waos:paises_mundo',
     format: 'image/png',
     transparent: true,
     tiled: true,
@@ -76,8 +76,8 @@ L.control.zoom({
 var markersCluster = L.markerClusterGroup();
 
 const iconCategory1 = L.icon({
-    iconUrl: '/img/INVIAS.png',  
-    iconSize: [35, 35]          
+    iconUrl: '/img/INVIAS.png',
+    iconSize: [35, 35]
 });
 const iconCategory2 = L.icon({
     iconUrl: '/img/ANI.png',
@@ -98,13 +98,13 @@ const iconCategory5 = L.icon({
 
 
 function getPeajesGeoJSON() {
-    const owsrootUrl = 'http://localhost:8081/geoserver/publico/ows';
+    const owsrootUrl = 'http://localhost:8080/geoserver/Waos/ows';
 
     const defaultParameters = {
         service: 'WFS',
         version: '1.0.0',
         request: 'GetFeature',
-        typeName: 'publico:PeajesCol',
+        typeName: 'Waos:PeajesCol',
         outputFormat: 'application/json'
     };
 
@@ -180,7 +180,7 @@ var overlayMaps = {
 L.control.layers(baseMaps, overlayMaps, { position: 'bottomright', collapsed: true }).addTo(map);
 
 L.control.scale({ position: 'bottomleft', imperial: false }).addTo(map);
-L.control.locate({ flyTo: true, position:'topright' }).addTo(map);
+L.control.locate({ flyTo: true, position: 'topright' }).addTo(map);
 
 
 
@@ -285,8 +285,8 @@ function searchLocation(inputId, suggestionsId) {
 function addMarker(inputId, lat, lon, popupText = "Ubicación seleccionada") {
     let marker = L.marker([lat, lon]).addTo(map).bindPopup(popupText);
 
-        stopMarkers.push(marker);
-        stopCoords.push([lat, lon]); 
+    stopMarkers.push(marker);
+    stopCoords.push([lat, lon]);
 
     if (stopMarkers.length > 0) {
         const group = L.featureGroup(stopMarkers);
@@ -306,7 +306,7 @@ document.addEventListener('click', (event) => {
     }
 });
 
-let routingControl; 
+let routingControl;
 
 function calculateRoute() {
     if (stopCoords.length >= 2) {
@@ -315,7 +315,7 @@ function calculateRoute() {
         }
 
         routingControl = L.Routing.control({
-            waypoints: stopCoords.map(coord => L.latLng(coord[0], coord[1])), 
+            waypoints: stopCoords.map(coord => L.latLng(coord[0], coord[1])),
             createMarker: () => null,
         }).addTo(map);
 

@@ -24,32 +24,32 @@ var miniMapLayerGoogle = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y
     subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
 });
 
-var cities = L.tileLayer.wms("http://localhost:8080/geoserver/wms", {
-    layers: 'Waos:ciudades_mundo',
+var cities = L.tileLayer.wms("http://localhost:8081/geoserver/wms", {
+    layers: 'publico:ciudades_mundo',
     format: 'image/png',
     transparent: true,
     tiled: true,
     attribution: "Natural Earth"
 });
 
-var rios = L.tileLayer.wms("http://localhost:8080/geoserver/wms", {
-    layers: 'Waos:hidrografia_mundo',
+var rios = L.tileLayer.wms("http://localhost:8081/geoserver/wms", {
+    layers: 'publico:Hidrografia_Mundo',
     format: 'image/png',
     transparent: true,
     tiled: true,
     attribution: "Natural Earth"
 });
 
-var departamentos = L.tileLayer.wms("http://localhost:8080/geoserver/wms", {
-    layers: 'Waos:dv_departamento',
+var departamentos = L.tileLayer.wms("http://localhost:8081/geoserver/wms", {
+    layers: 'publico:dv_Departamento',
     format: 'image/png',
     transparent: true,
     tiled: true,
     attribution: "Natural Earth"
 });
 
-var paises = L.tileLayer.wms("http://localhost:8080/geoserver/wms", {
-    layers: 'Waos:paises_mundo',
+var paises = L.tileLayer.wms("http://localhost:8081/geoserver/wms", {
+    layers: 'publico:Paises_Mundo',
     format: 'image/png',
     transparent: true,
     tiled: true,
@@ -98,13 +98,13 @@ const iconCategory5 = L.icon({
 
 
 function getPeajesGeoJSON() {
-    const owsrootUrl = 'http://localhost:8080/geoserver/Waos/ows';
+    const owsrootUrl = 'http://localhost:8081/geoserver/publico/ows';
 
     const defaultParameters = {
         service: 'WFS',
         version: '1.0.0',
         request: 'GetFeature',
-        typeName: 'Waos:PeajesCol',
+        typeName: 'publico:PeajesCol',
         outputFormat: 'application/json'
     };
 

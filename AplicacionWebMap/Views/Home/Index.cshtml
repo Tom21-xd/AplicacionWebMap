@@ -16,7 +16,7 @@
 <div id="map" class="relative w-full" style="height: calc(100vh - 60px); z-index: 1;"></div>
 
 <!-- Panel flotante de "Viajero Seguro" -->
-<div id="routePanel" class="fixed left-5 top-5 z-50 mt-14 w-72 rounded-lg bg-white p-4 shadow-lg">
+<div id="routePanel" class="fixed left-5 top-5 z-50 mt-14 w-72 rounded-lg bg-white p-4 shadow-lg" style="max-height: 600px; overflow-y: auto;">
     <h3 class="mb-4 text-xl font-semibold text-orange-500">Trayecto Confiable</h3>
     <div class="lista" id="lista">
         <div class="relative mb-3 rounded border border-black p-3">
@@ -30,15 +30,13 @@
         </div>
     </div>
     
-    <div class="flex">
+    <div class="mb-2 flex border-b border-gray-300">
         <button type="button" class="mb-2 me-2 rounded-full border border-yellow-400 px-5 py-2.5 text-center text-sm font-medium text-yellow-400 hover:text-black hover:bg-yellow-200" onclick="addStop()">Añadir parada</button>
-        <button type="button" class="border-2 mb-2 me-2 rounded-full border-gray-950 px-5 py-2.5 text-center text-sm font-medium text-gray-700 hover:text-white hover:bg-gray-500" onclick="">Limpiar</button>
+        <button type="button" class="border-2 mb-2 me-2 rounded-full border-gray-950 px-5 py-2.5 text-center text-sm font-medium text-gray-700 hover:text-white hover:bg-gray-500" onclick="clearRoute()">Clear</button>
 
     </div>
 
-
-
-    <div class="mb-3">
+    <div class="mb-3 border-b border-gray-300 pb-2">
         <h3 class="text-md mb-2 font-semibold text-orange-500">Categoria</h3>
         <select id="vehicleType" class="w-full rounded border border-gray-300 p-2 focus:border-orange-500 focus:ring focus:ring-orange-200">
             <option value="Categoria">Seleccione</option>
@@ -53,9 +51,13 @@
 
 
         </select>
-    </div>
 
-    <p id="routeResult" class="mt-4 text-center text-gray-500">Su ruta aparecerá aquí.</p>
+        <p id="routeResult" class="mt-4 text-center text-gray-500">Cantidad de peajes : --</p>
+
+    </div>
+    <div id="directionsPanel" class="mt-4 text-gray-500">
+        <p id="" class="mt-4 text-center text-gray-500">Su ruta aparecera aqui</p>
+    </div>
 </div>
 
 <!-- Scripts -->

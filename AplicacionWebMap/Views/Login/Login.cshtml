@@ -1,0 +1,83 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.0/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Personalización del color customYellow */
+        .bg-customYellow {
+            background-color: #FFC107; /* Color amarillo personalizado */
+        }
+
+        .bg-customYellow-600:hover {
+            background-color: #FFA000; /* Color más oscuro para el hover */
+        }
+
+        .bg-customYellow-700:hover {
+            background-color: #FF8F00; /* Color aún más oscuro para el hover */
+        }
+
+        /* Botón de Regresar en la esquina superior izquierda */
+        .back-button {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background-color: #EF4444;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+            .back-button:hover {
+                background-color: #DC2626;
+            }
+
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white shadow-lg rounded-lg flex flex-col md:flex-row max-w-4xl p-6 md:p-8 relative">
+        <!-- Botón de regresar en la esquina superior izquierda -->
+        <a href="@Url.Action("Index", "Home")" class="back-button">
+            <i class="fas fa-arrow-left"></i> 
+        </a>
+
+        <!-- Imagen del hotel -->
+        <div class="w-full md:w-1/2 flex items-center justify-center mb-6 md:mb-0">
+            <img src="~/img/mapa.png" alt="Hotel" class="w-full max-w-xs">
+        </div>
+
+        <!-- Formulario de inicio de sesión -->
+        <div class="w-full md:w-1/2 md:p-6 lg:p-8">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800 text-center md:text-center">Bienvenido!</h2>
+            <form class="space-y-4" id="login" novalidate asp-controller="Login" asp-action="Login" method="post">
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Correo electrónico</label>
+                    <input type="email" id="email" name="email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                </div>
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700">Contraseña</label>
+                    <input type="password" id="password" name="password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                </div>
+                <div class="flex items-center justify-between">
+                    <a href="#" class="text-sm text-orange-500 hover:underline">¿Olvidó su contraseña?</a>
+                </div>
+                <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 mt-4">
+                    <button type="submit" class="w-full md:w-auto px-4 py-2 bg-customYellow text-white font-medium rounded-md shadow transition-transform hover-scale hover:bg-customYellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-customYellow-500">Iniciar sesión</button>
+                    <a href="@Url.Action("Registro", "Usuario")" class="w-full md:w-auto px-4 py-2 bg-customYellow text-white font-medium rounded-md shadow transition-transform hover-scale hover:bg-customYellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-customYellow-500 text-center">Registrarse</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

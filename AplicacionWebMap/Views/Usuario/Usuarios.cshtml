@@ -19,6 +19,7 @@
                 <tr class="bg-customYellow text-dark text-center">
                     <th class="px-4 py-3 border-r">ID</th>
                     <th class="px-4 py-3 border-r">NOMBRE</th>
+                    <th class="px-4 py-3 border-r">CORREO</th>
                     <th class="px-4 py-3 border-r">TELÉFONO</th>
                     <th class="px-4 py-3">ROL</th>
                 </tr>
@@ -29,6 +30,7 @@
                     <tr class="@(usuario.Id % 2 == 0 ? "bg-gray-100" : "bg-white") hover:bg-gray-200 transition duration-200 text-center">
                         <td class="px-4 py-3 border-r text-gray-700">@usuario.Id</td>
                         <td class="px-4 py-3 border-r text-gray-700">@usuario.Nombre</td>
+                        <td class="px-4 py-3 text-gray-700">@usuario.Correo</td>
                         <td class="px-4 py-3 border-r text-gray-700">@usuario.Telefono</td>
                         <td class="px-4 py-3 text-gray-700">@usuario.Rol</td>
                     </tr>

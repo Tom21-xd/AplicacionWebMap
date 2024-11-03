@@ -1,0 +1,88 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.0/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Personalización del color customYellow */
+        .bg-customYellow {
+            background-color: #FFC107; /* Color amarillo personalizado */
+        }
+
+        .bg-customYellow-600:hover {
+            background-color: #FFA000; /* Color más oscuro para el hover */
+        }
+
+        .bg-customYellow-700:hover {
+            background-color: #FF8F00; /* Color aún más oscuro para el hover */
+        }
+
+        /* Botón de Cancelar en rojo */
+        .bg-red-500 {
+            background-color: #EF4444; /* Color rojo personalizado */
+        }
+
+        .bg-red-600:hover {
+            background-color: #DC2626; /* Color rojo más oscuro para el hover */
+        }
+
+        /* Transición suave en hover */
+        .transition-transform {
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.05); /* Efecto de escala en hover */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white shadow-lg rounded-lg flex flex-col md:flex-row max-w-4xl p-6 md:p-8">
+        <div class="w-full md:w-1/2 flex items-center justify-center mb-6 md:mb-0">
+            <img src="~/img/mapa.png" alt="Mapa" class="w-full max-w-xs">
+        </div>
+
+        <div class="w-full md:w-1/2 md:p-6 lg:p-8">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800 text-center md:text-center">Registro</h2>
+            <form class="space-y-4" id="register" novalidate asp-controller="Usuario" asp-action="Registro" method="post">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="w-full">
+                        <label for="id" class="block text-sm font-medium text-gray-700">ID</label>
+                        <input type="text"  id="id" name="id" class="mt-1 block w-full max-w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <div class="w-full">
+                        <label for="nombre" class="block text-sm font-medium text-gray-700">Nombre</label>
+                        <input type="text" id="nombre" name="nombre" class="mt-1 block w-full max-w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <div class="w-full">
+                        <label for="telefono" class="block text-sm font-medium text-gray-700">Teléfono</label>
+                        <input type="text" id="telefono" name="telefono" class="mt-1 block w-full max-w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <div class="w-full">
+                        <label for="correo" class="block text-sm font-medium text-gray-700">Correo electrónico</label>
+                        <input type="email" id="correo" name="correo" class="mt-1 block w-full max-w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <div class="w-full">
+                        <label for="password" class="block text-sm font-medium text-gray-700">Contraseña</label>
+                        <input type="password" id="password" name="password" class="mt-1 block w-full max-w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4 mt-4">
+                    <button type="submit" class="w-full px-4 py-2 bg-customYellow text-white font-medium rounded-md shadow transition-transform hover-scale hover:bg-customYellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-customYellow-500">Registrarse</button>
+                    <a href="@Url.Action("Login", "Login")" class="w-full px-4 py-2 bg-red-500 text-white font-medium rounded-md shadow transition-transform hover-scale hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 text-center">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
